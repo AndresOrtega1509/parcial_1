@@ -1,5 +1,5 @@
 package co.edu.uniquindio.parcial1.model;
-
+import co.edu.uniquindio.parcial1.ejercicio1.MainEjercicio1;
 public class Estudiante {
     private String nombre;
     private int edad;
@@ -8,13 +8,15 @@ public class Estudiante {
     private double nota1;
     private double nota2;
     private double nota3;
+    private double nota4;
+    private double nota5;
 
     /*Constructor*/
     public Estudiante(){
 
     }
 
-    public Estudiante(String nombre, int edad, String correo, int semestre, double nota1, double nota2, double nota3){
+    public Estudiante(String nombre, int edad, String correo, int semestre, double nota1, double nota2, double nota3, double nota4, double nota5){
         this.nombre = nombre;
         this.edad = edad;
         this.correo = correo;
@@ -22,6 +24,8 @@ public class Estudiante {
         this.nota1 = nota1;
         this.nota2 = nota2;
         this.nota3 = nota3;
+        this.nota4 = nota4;
+        this.nota5 = nota5;
     }
 
     /*  Getters y Setters*/
@@ -81,6 +85,22 @@ public class Estudiante {
         this.nota3 = nota3;
     }
 
+    public double getNota4() {
+        return nota4;
+    }
+
+    public void setNota4(double nota4) {
+        this.nota4 = nota4;
+    }
+
+    public double getNota5() {
+        return nota5;
+    }
+
+    public void setNota5(double nota5) {
+        this.nota5 = nota5;
+    }
+
     /**
      * Metodo que retorma la informacion del estudiante
      * @return
@@ -101,8 +121,11 @@ public class Estudiante {
 
     public double calcularPromedio(){
         double promedio = 0.0;
-        promedio = (getNota1() + getNota2() + getNota3())/3;
+        promedio = (getNota1() + getNota2() + getNota3() + getNota4() + getNota5())/3;
 
         return promedio;
     }
+
+
+
 }

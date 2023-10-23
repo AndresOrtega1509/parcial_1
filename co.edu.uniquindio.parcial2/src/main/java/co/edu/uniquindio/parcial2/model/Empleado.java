@@ -1,5 +1,7 @@
 package co.edu.uniquindio.parcial2.model;
 
+import co.edu.uniquindio.parcial2.model.enumeracion.TipoContrato;
+
 public class Empleado {
 
     private String nombre;
@@ -8,6 +10,7 @@ public class Empleado {
     private int edad;
     private double salario;
     private int numeroHorasTrabajo;
+    private TipoContrato tipoContrato;
     FincaUq ownedByFincaUq;
 
     /*Constructor*/
@@ -78,6 +81,14 @@ public class Empleado {
         return ownedByFincaUq;
     }
 
+    public TipoContrato getTipoContrato() {
+        return tipoContrato;
+    }
+
+    public void setTipoContrato(TipoContrato tipoContrato) {
+        this.tipoContrato = tipoContrato;
+    }
+
     public void setOwnedByFincaUq(FincaUq ownedByFincaUq) {
         this.ownedByFincaUq = ownedByFincaUq;
     }
@@ -91,6 +102,7 @@ public class Empleado {
                 ", edad=" + edad +
                 ", salario=" + salario +
                 ", numeroHorasTrabajo=" + numeroHorasTrabajo +
+                ", tipoContrato=" + tipoContrato +
                 '}';
     }
 }

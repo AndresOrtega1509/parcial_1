@@ -1,5 +1,7 @@
 package co.edu.uniquindio.parcial2.model;
 
+import co.edu.uniquindio.parcial2.model.enumeracion.TipoContrato;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,32 +44,56 @@ public class FincaUq {
         this.listaTareas = listaTareas;
     }
 
-    public void crearEmpleado(String nombre, String apellido, String cedula, int edad, double salario, int numeroHorasTrabajo) {
+    public void crearEmpleado( int tipoEmpleado, String nombre, String apellido, String cedula, int edad, double salario, int numeroHorasTrabajo, TipoContrato tipoContrato) {
 
         int resultadoBusqueda = devolverPosicionEmpleado(cedula);
         if (resultadoBusqueda == -1){
-            Empleado empleado = new Empleado();
-            empleado.setNombre(nombre);
-            empleado.setApellido(apellido);
-            empleado.setCedula(cedula);
-            empleado.setEdad(edad);
-            empleado.setSalario(salario);
-            empleado.setNumeroHorasTrabajo(numeroHorasTrabajo);
-            getListaEmpleados().add(empleado);
-            System.out.println("Empleado creado exitosamente");
+            if (tipoEmpleado == 1){
+                Jornalero jornalero = new Jornalero();
+                jornalero.setNombre(nombre);
+                jornalero.setApellido(apellido);
+                jornalero.setCedula(cedula);
+                jornalero.setEdad(edad);
+                jornalero.setSalario(salario);
+                jornalero.setNumeroHorasTrabajo(numeroHorasTrabajo);
+                jornalero.setTipoContrato(tipoContrato);
+                getListaEmpleados().add(jornalero);
+                System.out.println("Empleado creado exitosamente");
+
+
+            } else if (tipoEmpleado == 2) {
+                Recolector recolector = new Recolector();
+                recolector.setNombre(nombre);
+                recolector.setApellido(apellido);
+                recolector.setCedula(cedula);
+                recolector.setEdad(edad);
+                recolector.setSalario(salario);
+                recolector.setNumeroHorasTrabajo(numeroHorasTrabajo);
+                recolector.setTipoContrato(tipoContrato);
+                getListaEmpleados().add(recolector);
+                System.out.println("Empleado creado exitosamente");
+
+
+            }
+            else if (tipoEmpleado == 3){
+                Administrador administrador = new Administrador();
+                administrador.setNombre(nombre);
+                administrador.setApellido(apellido);
+                administrador.setCedula(cedula);
+                administrador.setEdad(edad);
+                administrador.setSalario(salario);
+                administrador.setNumeroHorasTrabajo(numeroHorasTrabajo);
+                administrador.setTipoContrato(tipoContrato);
+                getListaEmpleados().add(administrador);
+                System.out.println("Empleado creado exitosamente");
+
+            }
+            else
+                System.out.println("Ingrese un valor valido");
+
 
         }else {
             System.out.println("El empleado ya esta creado en el sistema");
-        }
-    }
-
-    public void mostrarEmpleado() {
-
-        List<Empleado> listaEmpleado = obtenerEmpleados();
-        int tamanoLista = listaEmpleado.size();
-        for (int i=0; i < tamanoLista; i++){
-            Empleado empleado = listaEmpleado.get(i);
-            System.out.println(empleado.toString());
         }
     }
 
@@ -96,7 +122,7 @@ public class FincaUq {
         }
     }
 
-    public void actualizarEmpleado(String cedula, String nuevoNombre, String nuevoApellido, int nuevaEdad, double nuevoSalario, int nuevoNumeroHoras) {
+    public void actualizarEmpleado(String cedula, String nuevoNombre, String nuevoApellido, int nuevaEdad, double nuevoSalario, int nuevoNumeroHoras, TipoContrato tipoContrato) {
 
         for (Empleado empleado : listaEmpleados){
             if (empleado.getCedula().equals(cedula)){
@@ -105,9 +131,51 @@ public class FincaUq {
                 empleado.setEdad(nuevaEdad);
                 empleado.setSalario(nuevoSalario);
                 empleado.setNumeroHorasTrabajo(nuevoNumeroHoras);
+                empleado.setTipoContrato(tipoContrato);
                 break;
             }
         }
+    }
+
+    public void mostrarInformacionTipoEmpleado(int tipoEmpleado) {
+
+        for (Empleado empleado : getListaEmpleados() ) {
+            if (tipoEmpleado == 0){
+                System.out.println(empleado.toString());
+            }
+            if (tipoEmpleado == 1 && empleado instanceof Jornalero){
+                System.out.println(empleado);
+            } else if (tipoEmpleado == 2 && empleado instanceof Recolector) {
+                System.out.println(empleado);
+            } else if (tipoEmpleado == 3 && empleado instanceof Administrador) {
+                System.out.println(empleado);
+
+            }
+        }
+    }
+
+    public void crearTarea(int numeroTarea, String cedulaEmpleado) {
+        Tarea tarea = new Tarea();
+        tarea.setNumeroTarea(numeroTarea);
+
+        Empleado empleado = obtenerEmpleado(cedulaEmpleado);
+
+        if (empleado != null){
+            tarea.setEmpleadoAsociado(empleado);
+        }
+        getListaTareas().add(tarea);
+    }
+
+    private Empleado obtenerEmpleado(String cedulaEmpleado) {
+        Empleado empleadoEncontrado = null;
+        for (Empleado empleado : getListaEmpleados()) {
+            if (empleado.getCedula().equals(cedulaEmpleado)) {
+                empleadoEncontrado = empleado;
+                break;
+            }
+        }
+        return empleadoEncontrado;
+
     }
 }
 

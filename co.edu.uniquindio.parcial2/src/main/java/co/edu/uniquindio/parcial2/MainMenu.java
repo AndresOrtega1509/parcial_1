@@ -1,6 +1,7 @@
 package co.edu.uniquindio.parcial2;
 
 import co.edu.uniquindio.parcial2.model.FincaUq;
+import co.edu.uniquindio.parcial2.model.enumeracion.TipoContrato;
 import co.edu.uniquindio.parcial2.util.CapturaDatosUtil;
 
 import java.util.Scanner;
@@ -17,13 +18,17 @@ public class MainMenu {
 
             switch (opcion) {
                 case 1:
+                    int tipoEmpleado = CapturaDatosUtil.leerIntConsola("Ingrese el tipo de empleado: Ingrese 1 - para crear un jornalero, 2 - para crear un recolector, 3 - para crear un administrador");
                     String nombre = CapturaDatosUtil.leerStringConsola("Ingresa el nombre del empleado: ");
                     String apellido = CapturaDatosUtil.leerStringConsola("Ingresa el apellido del empleado: ");
                     String cedula = CapturaDatosUtil.leerStringConsola("Ingresa la cedula del empleado: ");
                     int edad = CapturaDatosUtil.leerIntConsola("Ingresa la edad del empleado: ");
                     double salario = CapturaDatosUtil.leerDoubleConsola("Ingresa el salario del empleado: ");
                     int numeroHorasTrabajo = CapturaDatosUtil.leerIntConsola("Ingresa la cantidad de horas que trabaja al dia el empleado: ");
-                    fincaUq.crearEmpleado(nombre, apellido, cedula, edad, salario, numeroHorasTrabajo);
+                    System.out.println("Ingrese un tipo de contrato valido: HORAS, MEDIO_TIEMPO, TIEMPO_COMPLETO");
+                    System.out.print("\n");
+                    TipoContrato tipoContrato = TipoContrato.valueOf(CapturaDatosUtil.leerStringConsola("Ingrese el tipo de contrato del empleado: "));
+                    fincaUq.crearEmpleado(tipoEmpleado, nombre, apellido, cedula, edad, salario, numeroHorasTrabajo, tipoContrato);
 
                     break;
 
@@ -34,12 +39,15 @@ public class MainMenu {
                     edad = CapturaDatosUtil.leerIntConsola("Ingresa la nueva edad del empleado: ");
                     salario = CapturaDatosUtil.leerDoubleConsola("Ingresa el nuevo salario del empleado: ");
                     numeroHorasTrabajo = CapturaDatosUtil.leerIntConsola("Ingresa la nueva cantidad de horas que trabaja al dia el empleado: ");
-                    fincaUq.actualizarEmpleado(cedula, nombre, apellido, edad, salario, numeroHorasTrabajo);
+                    System.out.println("Ingrese un tipo de contrato valido: HORAS, MEDIO_TIEMPO, TIEMPO_COMPLETO");
+                    tipoContrato = TipoContrato.valueOf(CapturaDatosUtil.leerStringConsola("Ingrese el nuevo contrato del empleado: "));
+                    fincaUq.actualizarEmpleado(cedula, nombre, apellido, edad, salario, numeroHorasTrabajo, tipoContrato);
 
                     break;
 
                 case 3:
-                    fincaUq.mostrarEmpleado();
+                    int tipoEmpleadoImpresion = CapturaDatosUtil.leerIntConsola("Ingrese 0- para mostrar a todos los empleados, 1 - para mostrar a los Jornaleros, 2 - para mostrar a los recolectores, 3 - para mostrar a los administradores");
+                    fincaUq.mostrarInformacionTipoEmpleado(tipoEmpleadoImpresion);
                     break;
 
                 case 4:

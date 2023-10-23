@@ -8,6 +8,7 @@ public class Tarea {
     private Date fechaFin;
     private double duracionTarea;
     private String descripcion;
+    private Empleado empleadoAsociado;
     FincaUq ownedByFincaUq;
 
     /*Constructor*/
@@ -71,5 +72,13 @@ public class Tarea {
 
     public void setOwnedByFincaUq(FincaUq ownedByFincaUq) {
         this.ownedByFincaUq = ownedByFincaUq;
+    }
+
+    public Empleado getEmpleadoAsociado() {
+        return empleadoAsociado;
+    }
+
+    public void setEmpleadoAsociado(Empleado empleadoAsociado) {
+        this.empleadoAsociado = empleadoAsociado;
     }
 }

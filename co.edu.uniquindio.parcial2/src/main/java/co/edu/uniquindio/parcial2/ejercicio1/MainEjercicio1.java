@@ -3,6 +3,7 @@ package co.edu.uniquindio.parcial2.ejercicio1;
 import co.edu.uniquindio.parcial2.model.*;
 import co.edu.uniquindio.parcial2.model.enumeracion.TipoContrato;
 
+import java.util.Date;
 import java.util.List;
 
 public class MainEjercicio1 {
@@ -33,38 +34,16 @@ public class MainEjercicio1 {
         System.out.println("-----> Información luego de actualizar");
         mostrarInformacionEmpleados(fincaUq);
 
-        fincaUq.crearTarea(1, "1016874393");
+        Date fechaInicio = new Date(23,9,23,19,9);
+        Date fechaFin = new Date(23,9,24,15,9);
+
+        fincaUq.crearTarea(1, "1016874393", fechaInicio, fechaFin);
 
     }
 
     private static FincaUq inicializarDatosPrueba() {
         FincaUq fincaUq = new FincaUq();
         fincaUq.setNombre("El obrero");
-        Administrador administrador = new Administrador();
-        administrador.setNombre("Santiago");
-        administrador.setApellido("Botina");
-        administrador.setCedula("1739748303");
-        administrador.setEdad(44);
-        administrador.setSalario(1700000);
-        administrador.setNumeroHorasTrabajo(8);
-        administrador.setTipoContrato(TipoContrato.HORAS);
-        fincaUq.getListaEmpleados().add(administrador);
-        Jornalero jornalero = new Jornalero();
-        jornalero.setNombre("Rigo");
-        jornalero.setApellido("Perez");
-        jornalero.setCedula("1294309403");
-        jornalero.setEdad(50);
-        jornalero.setSalario(950000);
-        jornalero.setTipoContrato(TipoContrato.TIEMPO_COMPLETO);
-        fincaUq.getListaEmpleados().add(jornalero);
-        Recolector recolector = new Recolector();
-        recolector.setNombre("Lalo");
-        recolector.setApellido("Orozco");
-        recolector.setCedula("1683920394");
-        recolector.setEdad(38);
-        recolector.setSalario(1150000);
-        recolector.setTipoContrato(TipoContrato.MEDIO_TIEMPO);
-        fincaUq.getListaEmpleados().add(recolector);
 
         return fincaUq;
     }

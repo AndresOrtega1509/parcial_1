@@ -3,6 +3,7 @@ package co.edu.uniquindio.parcial2.model;
 import co.edu.uniquindio.parcial2.model.enumeracion.TipoContrato;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class FincaUq {
@@ -154,9 +155,13 @@ public class FincaUq {
         }
     }
 
-    public void crearTarea(int numeroTarea, String cedulaEmpleado) {
+    public void crearTarea(int numeroTarea, String cedulaEmpleado, Date fechaInicio, Date fechaFin) {
         Tarea tarea = new Tarea();
         tarea.setNumeroTarea(numeroTarea);
+        tarea.setFechaInicio(fechaInicio);
+        tarea.setFechaFin(fechaFin);
+
+        tarea.calcularDuracion();
 
         Empleado empleado = obtenerEmpleado(cedulaEmpleado);
 

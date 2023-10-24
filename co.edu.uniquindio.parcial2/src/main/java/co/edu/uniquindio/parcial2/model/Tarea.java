@@ -81,4 +81,37 @@ public class Tarea {
     public void setEmpleadoAsociado(Empleado empleadoAsociado) {
         this.empleadoAsociado = empleadoAsociado;
     }
+
+    public void calcularDuracion() {
+
+        long duracionMili = fechaFin.getTime() - fechaInicio.getTime();
+
+        this.duracionTarea = duracionMili;
+
+        long minutos = convertirMiliAMinutos(duracionMili);
+
+        long horas = convertirMiliAHoras(duracionMili);
+
+        setDuracionTarea(minutos);
+
+    }
+
+    private long convertirMiliAHoras(long duracionMili) {
+
+        long horas = 0;
+
+        horas = duracionMili / 3600000;
+
+        return horas;
+    }
+
+    private long convertirMiliAMinutos(long duracionMili) {
+
+        long minutos = 0;
+
+        minutos = duracionMili / 60000;
+
+        return  minutos;
+    }
+
 }

@@ -92,7 +92,7 @@ public class Tarea {
 
         long horas = convertirMiliAHoras(duracionMili);
 
-        setDuracionTarea(minutos);
+        setDuracionTarea(horas);
 
     }
 
@@ -114,4 +114,15 @@ public class Tarea {
         return  minutos;
     }
 
+    @Override
+    public String toString() {
+        return "Tarea{" +
+                "numeroTarea=" + numeroTarea +
+                ", fechaInicio=" + fechaInicio +
+                ", fechaFin=" + fechaFin +
+                ", duracionTarea=" + duracionTarea +
+                ", descripcion='" + descripcion + '\'' +
+                ", empleadoAsociado=" + empleadoAsociado +
+                '}';
+    }
 }

@@ -155,13 +155,13 @@ public class FincaUq {
         }
     }
 
-    public void crearTarea(int numeroTarea, String cedulaEmpleado, Date fechaInicio, Date fechaFin) {
+    public void crearTarea(int numeroTarea, String cedulaEmpleado, Date fechaInicio, Date fechaFin, String descripcion) {
         Tarea tarea = new Tarea();
         tarea.setNumeroTarea(numeroTarea);
         tarea.setFechaInicio(fechaInicio);
         tarea.setFechaFin(fechaFin);
-
         tarea.calcularDuracion();
+        tarea.setDescripcion(descripcion);
 
         Empleado empleado = obtenerEmpleado(cedulaEmpleado);
 
@@ -181,6 +181,10 @@ public class FincaUq {
         }
         return empleadoEncontrado;
 
+    }
+
+    public List<Tarea> obtenerTareas() {
+        return getListaTareas();
     }
 }
 

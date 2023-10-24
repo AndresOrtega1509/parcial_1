@@ -36,8 +36,15 @@ public class MainEjercicio1 {
 
         Date fechaInicio = new Date(23,9,23,19,9);
         Date fechaFin = new Date(23,9,24,15,9);
+        Date fechaInicio2 = new Date(23, 7, 20,6,20);
+        Date fechaInicio3 = new Date(23, 7, 15,10,10);
+        Date fechaFin3 = new Date(23, 8, 15, 22, 0);
 
-        fincaUq.crearTarea(1, "1016874393", fechaInicio, fechaFin);
+        fincaUq.crearTarea(1, "1016874393", fechaInicio, fechaFin, "Sembrar plantas");
+        fincaUq.crearTarea(2, "1094238594", fechaInicio2, fechaFin3, "Recojer cafe" );
+        fincaUq.crearTarea(3, "1098432309", fechaInicio3, fechaFin3, "Administrar dinero" );
+
+        mostrarInformacionTareas(fincaUq);
 
     }
 
@@ -69,5 +76,14 @@ public class MainEjercicio1 {
     private static void actualizarEmpleado(String cedula,String nuevoNombre, String nuevoApellido, int nuevaEdad, double nuevoSalario , int nuevoNumeroHoras, TipoContrato nuevoContrato, FincaUq fincaUq) {
 
         fincaUq.actualizarEmpleado(cedula, nuevoNombre, nuevoApellido, nuevaEdad, nuevoSalario, nuevoNumeroHoras, nuevoContrato);
+    }
+
+    private static void mostrarInformacionTareas(FincaUq fincaUq) {
+        List<Tarea> listaTareas = fincaUq.obtenerTareas();
+        int tamanoLista = listaTareas.size();
+        for (int i = 0; i < tamanoLista; i ++){
+            Tarea tarea = listaTareas.get(i);
+            System.out.println(tarea.toString());
+        }
     }
 }
